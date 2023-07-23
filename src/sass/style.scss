@@ -10,7 +10,8 @@
 	width: 90%;
 	max-width: 500px;
 	margin: 175px auto 0px;
-	background: linear-gradient(120deg, #217127, #ab9a64);
+	// background: linear-gradient(120deg, #217127, #ab9a64);
+	background: -webkit-linear-gradient(240deg, #33a7f0, #eeff00af);
 	border-radius: 20px;
 	padding: 40px 35px;
 	text-align: center;
@@ -36,6 +37,11 @@
 		&::placeholder {
 			font-size: 20px;
 		}
+		&:focus {
+			box-shadow:
+				0 10px 20px rgba(0, 0, 0, 0.5),
+				inset 0 -10px 20px rgba(255, 255, 255, 0.5);
+		}
 	}
 
 	&__button {
@@ -48,6 +54,10 @@
 		cursor: pointer;
 		img {
 			width: 20px;
+		}
+		transition: transform 0.2s ease;
+		&:active {
+			transform: scale(0.85);
 		}
 	}
 }
@@ -64,6 +74,7 @@
 	&__temp {
 		font-size: 80px;
 		font-weight: 500;
+		margin-bottom: 5px;
 	}
 	&__city {
 		font-size: 45px;

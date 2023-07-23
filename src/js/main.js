@@ -14,24 +14,44 @@ async function checkWeather(city) {
 
 		document.querySelector('.weather__temp').innerHTML = Math.round(data.main.temp) + '°C';
 		document.querySelector('.weather__city').innerHTML = data.name;
-		document.querySelector('#metrePerSec').innerHTML = data.wind.speed + ' km/sec';
+		document.querySelector('#metrePerSec').innerHTML = data.wind.speed + ' m/sec';
 		document.querySelector('#humidity').innerHTML = data.main.humidity + ' %';
 		document.querySelector('.weather').style.display = 'block';
 		document.querySelector('.weather__description').innerHTML = data.weather[0].description;
+		document.querySelector('#feels-like').innerHTML =
+			'Feels like ' + Math.round(data.main.feels_like) + '°C';
 
 		switch (data.weather[0].main) {
 			case 'Clear':
-				return (weatherImage.src = '/images/clear.png');
+				return (
+					(weatherImage.src = '/images/clear.png'),
+					(document.body.style.backgroundImage = "url('/favicon/clear.gif')")
+				);
 			case 'Clouds':
-				return (weatherImage.src = '/images/clouds.png');
+				return (
+					(weatherImage.src = '/images/clouds.png'),
+					(document.body.style.backgroundImage = "url('/favicon/clouds.gif')")
+				);
 			case 'Drizzle':
-				return (weatherImage.src = '/images/drizzle.png');
+				return (
+					(weatherImage.src = '/images/drizzle.png'),
+					(document.body.style.backgroundImage = "url('/favicon/drizzle.gif')")
+				);
 			case 'Mist':
-				return (weatherImage.src = '/images/mist.png');
+				return (
+					(weatherImage.src = '/images/mist.png'),
+					(document.body.style.backgroundImage = "url('/favicon/mist.gif')")
+				);
 			case 'Rain':
-				return (weatherImage.src = '/images/rain.png');
+				return (
+					(weatherImage.src = '/images/rain.png'),
+					(document.body.style.backgroundImage = "url('/favicon/rain.gif')")
+				);
 			case 'Snow':
-				return (weatherImage.src = '/images/snow.png');
+				return (
+					(weatherImage.src = '/images/snow.png'),
+					(document.body.style.backgroundImage = "url('/favicon/snow.gif')")
+				);
 		}
 	} catch (error) {
 		console.log(`Something went wrong: ${error}`);
