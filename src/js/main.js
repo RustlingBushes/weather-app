@@ -7,6 +7,26 @@ const searchInput = document.querySelector('.search__input');
 const searchBtn = document.querySelector('.search__button');
 const weatherImage = document.querySelector('.weather__icon');
 
+//-------------------Get day of week and time----------------------
+const newDate = new Date();
+
+const weekDays = {
+	0: 'Sunday',
+	1: 'Monday',
+	2: 'Tuesday',
+	3: 'Wednesday',
+	4: 'Thursday',
+	5: 'Friday',
+	6: 'Saturday',
+};
+
+let dayOfWeek = weekDays[newDate.getDay()];
+let currentDay = newDate.getDate().toString();
+let currentHour = newDate.getHours().toString();
+let currentMinutes = newDate.getMinutes().toString();
+let currentTime = `${currentHour} : ${currentMinutes}`;
+console.log(currentTime);
+//------------------async promise to get weather statistic----------------------
 async function checkWeather(city) {
 	try {
 		const response = await fetch(`${apiUrl}q=${city}&appid=${apiKey}&units=metric`);
@@ -14,6 +34,9 @@ async function checkWeather(city) {
 
 		document.querySelector('.weather__temp').innerHTML = Math.round(data.main.temp) + '°C';
 		document.querySelector('.weather__city').innerHTML = data.name;
+		document.querySelector('.data-time__day').innerHTML = dayOfWeek;
+		document.querySelector('.data-time__date').innerHTML = currentDay;
+		document.querySelector('.data-time__time').innerHTML = currentTime;
 		document.querySelector('#metrePerSec').innerHTML = data.wind.speed + ' m/sec';
 		document.querySelector('#humidity').innerHTML = data.main.humidity + ' %';
 		document.querySelector('.weather').style.display = 'block';
