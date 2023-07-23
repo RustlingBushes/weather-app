@@ -1,0 +1,103 @@
+@import "reset.scss";
+@import "normalize.scss";
+@import "variables.scss";
+
+#app {
+	overflow: hidden;
+}
+
+.card {
+	width: 90%;
+	max-width: 500px;
+	margin: 175px auto 0px;
+	background: linear-gradient(120deg, #217127, #ab9a64);
+	border-radius: 20px;
+	padding: 40px 35px;
+	text-align: center;
+	color: #fff;
+}
+
+.search {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	&__input {
+		border: 0;
+		outline: 0;
+		background: #ebfffc;
+		color: #555;
+		padding: 10px 25px;
+		height: 60px;
+		border-radius: 30px;
+		flex: 1;
+		margin-right: 16px;
+		font-size: 20px;
+		&::placeholder {
+			font-size: 20px;
+		}
+	}
+
+	&__button {
+		border: 0;
+		outline: 0;
+		background: #ebfffc;
+		border-radius: 50%;
+		width: 60px;
+		height: 60px;
+		cursor: pointer;
+		img {
+			width: 20px;
+		}
+	}
+}
+
+.weather {
+	&__icon {
+		width: 170px;
+		margin-top: 30px;
+	}
+	&__description {
+		margin-top: -20px;
+	}
+
+	&__temp {
+		font-size: 80px;
+		font-weight: 500;
+	}
+	&__city {
+		font-size: 45px;
+		font-weight: 400;
+		margin-top: 10px;
+	}
+}
+
+.details {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 20px;
+	margin-top: 50px;
+
+	&__col {
+		display: flex;
+		align-items: center;
+		text-align: left;
+		img {
+			width: 40px;
+			margin-right: 10px;
+		}
+	}
+
+	&__stat {
+		font-size: 22px;
+	}
+
+	&__text {
+		font-size: 22px;
+	}
+}
+
+.weather {
+	display: none;
+}

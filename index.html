@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+		rel="stylesheet">
+	<script type="module" src="/src/js/main.js" defer></script>
+	<title>Weather app</title>
+</head>
+
+<body>
+	<div id="app">
+		<div class="card">
+			<div class="search">
+				<input class="search__input" type="text" placeholder="Write city name"
+					spellcheck="false" />
+				<button class="search__button"><img src="/images/search.png"
+						alt=""></button>
+			</div>
+			<div class="weather">
+				<img class="weather__icon" src="/images/rain.png">
+				<h3 class="weather__description"></h3>
+				<h1 id="temp" class="weather__temp"></h1>
+				<h2 class="weather__city"></h2>
+				<div class="details">
+					<div class="details__col">
+						<img src="/images/humidity.png" alt="">
+						<div class="details__humidity">
+							<p id="humidity" class="details__stat"></p>
+							<p class="details__text">Humidity</p>
+						</div>
+					</div>
+					<div class="details__col">
+						<img src="/images/wind.png" alt="">
+						<div>
+							<p id="metrePerSec" class="details__stat"></p>
+							<p class="details__text">Wind speed</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
