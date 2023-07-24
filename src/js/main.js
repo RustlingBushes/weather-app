@@ -22,15 +22,18 @@ const weekDays = {
 
 const dayOfWeek = weekDays[newDate.getDay()];
 const currentDay = newDate.getDate().toString();
-const currentHour = newDate.getHours().toString();
-const currentMinutes = newDate.getMinutes().toString();
-const currentTime = `${currentHour} : ${
-	currentMinutes < 10 ? '0' + currentMinutes : currentMinutes
-}`;
 
-document.querySelector('.data-time__day').innerHTML = dayOfWeek;
-document.querySelector('.data-time__time').innerHTML = currentTime;
-document.querySelector('.data-time__date').innerHTML = currentDay;
+setInterval(() => {
+	const newTime = new Date();
+	const currentHour = newTime.getHours().toString();
+	const currentMinutes = newTime.getMinutes().toString();
+	const currentTime = `${currentHour} : ${
+		currentMinutes < 10 ? '0' + currentMinutes : currentMinutes
+	}`;
+	document.querySelector('.data-time__day').innerHTML = dayOfWeek;
+	document.querySelector('.data-time__time').innerHTML = currentTime;
+	document.querySelector('.data-time__date').innerHTML = currentDay;
+}, 1000);
 
 //------------------async promise to get weather statistic----------------------
 async function checkWeather(city) {
