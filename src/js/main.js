@@ -20,12 +20,18 @@ const weekDays = {
 	6: 'Saturday',
 };
 
-let dayOfWeek = weekDays[newDate.getDay()];
-let currentDay = newDate.getDate().toString();
-let currentHour = newDate.getHours().toString();
-let currentMinutes = newDate.getMinutes().toString();
-let currentTime = `${currentHour} : ${currentMinutes}`;
-console.log(currentTime);
+const dayOfWeek = weekDays[newDate.getDay()];
+const currentDay = newDate.getDate().toString();
+const currentHour = newDate.getHours().toString();
+const currentMinutes = newDate.getMinutes().toString();
+const currentTime = `${currentHour} : ${
+	currentMinutes < 10 ? '0' + currentMinutes : currentMinutes
+}`;
+
+document.querySelector('.data-time__day').innerHTML = dayOfWeek;
+document.querySelector('.data-time__time').innerHTML = currentTime;
+document.querySelector('.data-time__date').innerHTML = currentDay;
+
 //------------------async promise to get weather statistic----------------------
 async function checkWeather(city) {
 	try {
@@ -34,15 +40,14 @@ async function checkWeather(city) {
 
 		document.querySelector('.weather__temp').innerHTML = Math.round(data.main.temp) + '°C';
 		document.querySelector('.weather__city').innerHTML = data.name;
-		document.querySelector('.data-time__day').innerHTML = dayOfWeek;
-		document.querySelector('.data-time__date').innerHTML = currentDay;
-		document.querySelector('.data-time__time').innerHTML = currentTime;
 		document.querySelector('#metrePerSec').innerHTML = data.wind.speed + ' m/sec';
 		document.querySelector('#humidity').innerHTML = data.main.humidity + ' %';
 		document.querySelector('.weather').style.display = 'block';
 		document.querySelector('.weather__description').innerHTML = data.weather[0].description;
 		document.querySelector('#feels-like').innerHTML =
 			'Feels like ' + Math.round(data.main.feels_like) + '°C';
+
+		localStorage.setItem('cityName', city);
 
 		switch (data.weather[0].main) {
 			case 'Clear':
@@ -78,8 +83,14 @@ async function checkWeather(city) {
 		}
 	} catch (error) {
 		console.log(`Something went wrong: ${error}`);
-		alert('The city name has been written wrong!');
+		city === '' ? alert(`Write the city name!`) : alert('The city name has been written wrong!');
 	}
 }
-
-searchBtn.addEventListener('click', () => checkWeather(searchInput.value));
+const savedCity = localStorage.getItem('cityName');
+if (savedCity) {
+	checkWeather(savedCity);
+}
+searchBtn.addEventListener('click', () => {
+	localStorage.setItem('cityName', searchInput.value);
+	checkWeather(searchInput.value);
+});
